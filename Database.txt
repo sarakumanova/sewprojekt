@@ -1,0 +1,9 @@
+CREATE DATABASE shop;
+use shop;
+
+CREATE TABLE kunden(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+    Vorname varchar(50) not null,
+    Nachname varchar(50) not null,
+    Age int not null
+);
