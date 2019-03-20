@@ -503,6 +503,7 @@ try {
         stmt_add.setString(3,textAge.getText());
         
         // execute Update und Query
+        
         int rows_changed = stmt_add.executeUpdate();
         res_selectAll = stmt_selectAll.executeQuery();
         
