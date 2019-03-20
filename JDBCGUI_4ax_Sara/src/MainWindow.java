@@ -374,12 +374,13 @@ public class MainWindow extends javax.swing.JFrame {
             res_selectAll = stmt_selectAll.executeQuery();
        
         if(res_selectAll.next()){
-            // Resultaten vom resultset nehmen
+            // take results from resultset  
             int id = res_selectAll.getInt("ID");
             String vorname = res_selectAll.getString("Vorname");
             String nachname = res_selectAll.getString("Nachname");
             String age = res_selectAll.getString("Age");
-            // Resultaten die genohmen wurden, in variablen speichern
+            
+            // save the taken results in variables  
             textID.setText(""+id);
             textVorname.setText(vorname);
             textNachname.setText(nachname);
@@ -405,7 +406,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void bttnDisconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnDisconActionPerformed
 
         try {
-            // Verbindung schliessen  
+            // close connection   
             con.close();
             // disable and enable components wrt connected or not connected
             bttnConnection.setEnabled(true);
@@ -422,14 +423,14 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void bttnRechtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnRechtsActionPerformed
         try {
-        // Resultaten vom resultset nehmen
-       // hier werden die kunden rechts verschieben              
+        // take the results from resultset
+       // push(verschiebe) the clients to the right                
         if(res_selectAll.next()){ 
             int id = res_selectAll.getInt("ID"); 
             String vorname = res_selectAll.getString("Vorname");
             String nachname = res_selectAll.getString("Nachname");
             String age = res_selectAll.getString("Age");
-            // Resultaten die genohmen wurden, in variablen speichern
+            // save the taken results in variables
             textID.setText(""+id);
             textVorname.setText(vorname);
             textNachname.setText(nachname);
@@ -452,14 +453,15 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void bttnLinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLinksActionPerformed
 try {
-       // Resultaten vom resultset nehmen
-      // hier werden die kunden links verschieben
+       // take the results from resultset 
+      // push(verschiebe) the clients to the left 
         if(res_selectAll.previous()){ 
             int id = res_selectAll.getInt("ID");
             String vorname = res_selectAll.getString("Vorname");
             String nachname = res_selectAll.getString("nachname");
             String age = res_selectAll.getString("age");
-            // Resultaten die genohmen wurden, in variablen speichern
+            
+            // save the taken results in variables
             textID.setText(""+id);
             textVorname.setText(vorname);
             textNachname.setText(nachname);
@@ -478,7 +480,7 @@ try {
     }//GEN-LAST:event_bttnLinksActionPerformed
 
     private void txtclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtclearActionPerformed
-       // Vorname, Nachname, Age Felder als Leer setzen
+       // put the Vorname, Nachname, Age fields as empty  
         textVorname.setText("");
         textNachname.setText("");
         textAge.setText("");
@@ -495,7 +497,7 @@ try {
 
     private void bttnADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnADDActionPerformed
         try{
-        // Statement insert ausfuhren und Werte setzen fur Vorname, Nachname und Age
+        // execute the insert statement and put values for Vorname, Nachname, Age
         stmt_add.setString(1,textVorname.getText());
         stmt_add.setString(2,textNachname.getText());
         stmt_add.setString(3,textAge.getText());
@@ -505,10 +507,10 @@ try {
         res_selectAll = stmt_selectAll.executeQuery();
         
         if(rows_changed > 0){
-            // Wenn etwas andert successful zeigen
+            // when something changes, show successful 
             javax.swing.JOptionPane.showMessageDialog(this, "Successful!");
         }else{
-            // sonst not successful
+            // otherwise show not successful
         javax.swing.JOptionPane.showMessageDialog(this, "NOT Successful!");
         }
             
@@ -526,7 +528,7 @@ try {
 
     private void bttnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnUpdateActionPerformed
        try{
-        // Statement update ausfuhren und Werte setzen fur Vorname, Nachname, Age und ID
+        // execute the update statement and put values for Vorname, Nachname, Age, ID
         stmt_update.setString(1,textVorname.getText());
         stmt_update.setString(2,textNachname.getText());
         stmt_update.setString(3,textAge.getText());
@@ -537,10 +539,10 @@ try {
         res_selectAll = stmt_selectAll.executeQuery();
         
         if(rows_changed > 0){
-            // Wenn etwas andert Update zeigen
+            // when something changes, show updated
             javax.swing.JOptionPane.showMessageDialog(this, "Updated!");
         }else{
-            // sonst not Update zeigen
+            // otherwise show NOT updated
         javax.swing.JOptionPane.showMessageDialog(this, "NOT Updated!");
         }
             
@@ -554,7 +556,7 @@ try {
 
     private void bttnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnDeleteActionPerformed
         try{
-        // Statement delete ausfuhren und Werte setzen fur ID
+        // Execute delete statement und put the values for ID
         stmt_delete.setString(1,textID.getText());
         
         // execute Update und Query
@@ -562,10 +564,10 @@ try {
         res_selectAll = stmt_selectAll.executeQuery();
         
         if(rows_changed > 0){
-            // Wenn etwas andert Deleted zeigen
+            // if something changes, show deleted
             javax.swing.JOptionPane.showMessageDialog(this, "Deleted!");
         }else{
-            // sonst not deleted zeigen
+            // otherwise show not deleted
         javax.swing.JOptionPane.showMessageDialog(this, "NOT Deleted!");
         }
             
